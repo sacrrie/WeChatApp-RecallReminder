@@ -1,11 +1,11 @@
-import storeManager from './store/storeManager'
+import saveManager from './store/saveManager'
 import todoStore from './store/todoStore'
 
 //app.js
 App({
   onLaunch: function () {
     // 读取数据
-    storeManager.read()
+    saveManager.read()
 
     // 获取用户信息
     wx.getUserInfo({
@@ -24,13 +24,13 @@ App({
    * 小程序隐藏事件
    */
   onHide() {
-    storeManager.save()
+    saveManager.save()
   },
 
   /**
    * 小程序错误事件
    */
   onError() {
-    storeManager.save()
+    saveManager.save()
   }
 })

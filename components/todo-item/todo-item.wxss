@@ -4,21 +4,13 @@
   background: #FFF;
   border-left: 8rpx solid red;
   font-size: 32rpx;
-  padding: 22rpx 15rpx; 
+  padding: 22rpx 15rpx;
   /* border-bottom: 1rpx dashed #f0f3ff;  */
 }
 
+
 .todo-item--level1 {
-  border-left-color: red;
-}
-.todo-item--level2 {
-  border-left-color: #FDC533;
-}
-.todo-item--level3 {
-  border-left-color: #5872DE;
-}
-.todo-item--level4 {
-  border-left-color: #A3ABAE;
+  border-left-color: #f6f8f800;
 }
 
 .todo-item__col1 {
@@ -30,8 +22,10 @@
 }
 
 .todo-item__col3 {
-  flex: 2;
+  flex: 1;
+
 }
+
 
 .todo-item__checkbox {
   display: inline-block;

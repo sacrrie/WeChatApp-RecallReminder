@@ -33,8 +33,19 @@ Component({
       let checked = e.detail.data.checked
       this.data.todo.completed = checked
       this.data.todo.completedAt = util.formatTime(new Date())
+      this.data.todo.repetition=this.data.todo.repetition.slice(0,-1)
       this.update()
     },
+    
+    handleForgot(e) {
+      //let index = e.detail.dataset.index
+      this.data.todo.repetition = util.getRepetitions(new Date())
+      this.update()
+    },
+    /*
+
+    */
+
 
     handleTitleChange (e) {
       this.data.todo.title = e.detail.value

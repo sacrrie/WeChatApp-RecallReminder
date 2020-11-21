@@ -1,7 +1,5 @@
-# TodoList
+# WeChatApp-ReviewReminder
+This is a spaced repetition reminder app on the WeChat platform
 
-> 一个简单的 TodoList 微信小程序
+an rework and fork of https://github.com/charleslo1/weapp-todo
 
-# 截图
-
-![任务](./assets/img/img-task.gif)

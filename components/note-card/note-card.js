@@ -1,5 +1,5 @@
 // components/note-card/note-card.js
-import Note from '../../models/Note'
+import Todo from '../../models/Todo'
 
 Component({
   /**
@@ -7,8 +7,8 @@ Component({
    */
   properties: {
     note: {
-      type: Note,
-      default: new Note()
+      type: Todo,
+      default: new Todo()
     }
   },
 

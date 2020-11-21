@@ -1,6 +1,6 @@
 // pages/note/list.js
-import Note from '../../models/Note'
-import noteStore from '../../store/noteStore'
+import Todo from '../../models/Todo'
+import todoStore from '../../store/todoStore'
 
 Page({
 
@@ -27,7 +27,7 @@ Page({
    * 同步数据
    */
   syncData() {
-    this.data.notes = noteStore.getNotes()
+    this.data.notes = todoStore.getAllTodos()
     this.update()
     // 动画结束后取消动画队列延迟
     setTimeout(() => {
@@ -52,7 +52,7 @@ Page({
     // 获取 uuid
     let uuid = e.currentTarget.dataset.uuid
     wx.navigateTo({
-      url: '../note/create?uuid=' + uuid
+      url: '../todo/create?uuid=' + uuid
     })
   },
 
@@ -69,8 +69,8 @@ Page({
       content: '确定要删除这个笔记吗？',
       success: (e) => {
         if (e.confirm) {
-          noteStore.removeNote(uuid)
-          noteStore.save()
+          todoStore.removeTodo(uuid)
+          todoStore.save()
           this.syncData()
         }
       }
@@ -92,7 +92,7 @@ Page({
    */
   handleAddNote() {
     wx.navigateTo({
-      url: '../note/create'
+      url: '../todo/create'
     })
   }
 })

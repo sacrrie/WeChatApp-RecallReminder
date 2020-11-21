@@ -4,6 +4,6 @@
     {{note.title}}
   </view>
   <view class="note-card__content">
-    {{note.content || '新建笔记'}}
+    {{note.desc || '新建笔记'}}
   </view>
 </view>

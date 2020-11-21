@@ -25,7 +25,24 @@ const uuid = () => {
   })
 }
 
+const addDays = (date,days)=>{
+    let ans=new Date(date)
+    ans.setDate(ans.getDate()+days)
+    return ans
+    }
+
+const getRepetitions=(date)=>{
+    let ans=[]
+    const repetitonSpaces=[60,35,16,7,1]
+    for (let i=0;i<repetitonSpaces.length;i++){
+        ans.push(addDays(date,repetitonSpaces[i]))
+        }
+    return ans
+}
+
 module.exports = {
   formatTime: formatTime,
-  uuid: uuid
+  uuid: uuid,
+  addDays: addDays,
+  getRepetitions: getRepetitions
 }

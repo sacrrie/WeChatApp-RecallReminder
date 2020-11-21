@@ -1,5 +1,6 @@
 //index.js
 import Todo from '../../models/Todo'
+import util from '../../utils/util'
 import todoStore from '../../store/todoStore'
 
 //获取应用实例
@@ -10,12 +11,6 @@ Page({
     // todos
     todos: [],
 
-    // todo 计数
-    uncompletedCount: 0,
-    completedCount: 0,
-
-    // 是否动画延迟
-    delay: true
   },
 
   /**
@@ -47,44 +42,68 @@ Page({
     // 获取列表
     this.data.todos = todoStore.getTodos()
     this.update()
-    // 更新置顶标题
-    let uncompletedCount = todoStore.getUncompletedTodos().length
-    let todayCompletedCount = todoStore.getTodayCompletedTodos().length
-    let title = ['TodoList（进行中: ', uncompletedCount, ', 今日已完成: ', todayCompletedCount, '）'].join('')
-    wx.setTopBarText({ text: title })
-    // 动画结束后取消动画队列延迟
-    setTimeout(() => {
-      this.update({ delay: false })
-    }, 2000)
+  },
+  
+  handleCompletedChange(e) {
+    let uuid = e.currentTarget.dataset.uuid
+    let original_todo=todoStore.getTodo(uuid)
+    original_todo.repetition.pop()
+    todoStore.editTodo(uuid,original_todo)
+    todoStore.save()
+  },
+  
+  handleForgot(e) {
+    let uuid = e.currentTarget.dataset.uuid
+    let original_todo=todoStore.getTodo(uuid)
+    original_todo.repetition=util.getRepetitions(new Date())
+    todoStore.editTodo(uuid,original_todo)
+    todoStore.save()
+    this.syncData()
   },
 
+
   /**
-   * Todo 数据改变事件
+   *  tap 事件
    */
-  handleTodoItemChange (e) {
-    let index = e.currentTarget.dataset.index
-    let todo = e.detail.data.todo
-    let item = this.data.todos[index]
-    Object.assign(item, todo)
-    this.update()
+  handleTodoTap(e) {
+    // 判断锁
+    if (this.disableTap) return
+    // 获取 uuid
+    let uuid = e.currentTarget.dataset.uuid
+    wx.navigateTo({
+      url: '../todo/create?uuid=' + uuid
+    })
   },
 
   /**
-   * Todo 长按事件
+   *  longtap 事件
    */
   handleTodoLongTap(e) {
-    // 获取 index
-    let index = e.currentTarget.dataset.index
+    // 加锁：避免触发 tap 事件
+    this.disableTap = true
+    // 获取 uuid
+    let uuid = e.currentTarget.dataset.uuid
     wx.showModal({
       title: '删除提示',
-      content: '确定要删除这项任务吗？',
+      content: '确定要删除这个笔记吗？',
       success: (e) => {
         if (e.confirm) {
-          this.data.todos.splice(index, 1)
-          this.update()
+          todoStore.removeTodo(uuid)
+          todoStore.save()
+          this.syncData()
         }
       }
     })
+  },
+
+  /**
+   *  touched 事件
+   */
+  handleTodoTouched() {
+    setTimeout(() => {
+      // 解锁 tap 事件
+      this.disableTap = false
+    }, 200)
   },
 
   /**
@@ -92,8 +111,6 @@ Page({
    */
   update(data) {
     data = data || this.data
-    data.completedCount = todoStore.getCompletedTodos().length
-    data.uncompletedCount = todoStore.getUncompletedTodos().length
     this.setData(data)
   },
 
