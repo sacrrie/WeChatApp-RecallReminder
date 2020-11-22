@@ -1,6 +1,8 @@
 // pages/note/list.js
 import Todo from '../../models/Todo'
 import todoStore from '../../store/todoStore'
+import util from '../../utils/util'
+
 
 Page({
 

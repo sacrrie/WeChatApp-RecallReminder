@@ -12,7 +12,9 @@ class Todo extends Model {
       title: '',
       desc: '',
       createdAt: new Date(),
-      repetition: []
+      repetition: [],
+      done: []
+
     }, model)
 
 

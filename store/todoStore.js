@@ -24,21 +24,21 @@ class TodoStore extends Store {
       title: '欢迎使用复习提醒',
       createdAt: new Date('2010-5-20')
     }), new Todo({
-      title: '点击左边勾选框完成一项复习',
+      title: '点击左勾选框完成一项复习',
       createdAt: new Date('2010-5-20')
     }),
     new Todo({
-      title: '点击下面的 + 新建一项复习项吧',
+      title: '点击下面的 + 新建一项复习项',
       createdAt: new Date('2010-5-20')
-    }), 
+    }),
     new Todo({
-      title: '没掌握的话点击右边按钮重置复习',
+      title: '没掌握点右边按钮重置',
       createdAt: new Date('2010-5-20')
-    }), 
+    }),
     new Todo({
       title: '单击可以查看详情和修改',
       createdAt: new Date('2010-5-20')
-    }), 
+    }),
     new Todo({
       title: '长按可删除复习项',
       createdAt: new Date('2010-5-20')
@@ -152,47 +152,6 @@ class TodoStore extends Store {
     wx.setStorageSync(this.key, this.todos)
   }
 
-  ///**
-  // * 获取日期统计数据
-  // */
-  //getStatisticsByDate () {
-  //  let result = []
-  //  let todos = this.getCompletedTodos()
-  //  let temp = {}
-  //  todos.forEach((item) => {
-  //    temp[item.completedAt] = temp[item.completedAt] ? temp[item.completedAt] + 1 : 1
-  //  })
-  //  for (let key in temp) {
-  //    result.push({
-  //      completedAt: key,
-  //      count: temp[key]
-  //    })
-  //  }
-  //  result = result.sort((a, b) => (a.completedAt > b.completedAt))
-  //  return result
-  //}
-  ///**
-  // * 获取未完成的 todos
-  // */
-  //getUncompletedTodos () {
-  //  return this.todos.filter(item => !item.completed)
-  //}
-
-  ///**
-  // * 获取已完成的 todos
-  // */
-  //getCompletedTodos() {
-  //  return this.todos.filter(item => item.completed)
-  //}
-
-  ///**
-  // * 获取今天完成的 todos
-  // */
-  //getTodayCompletedTodos () {
-  //  let todos = this.getCompletedTodos()
-  //  let date = util.formatTime(new Date())
-  //  return todos.filter(item => item.completedAt === date)
-  //}
 }
 
 export default new TodoStore()

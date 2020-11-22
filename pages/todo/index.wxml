@@ -4,17 +4,26 @@
 		<view class="todo-header" wx:if="{{todos.length}}">
 			今日需复习
 		</view>
-		<text wx:if="{{!todos.length}}">
+		<view class="todo-header" wx:if="{{!todos.length}}">
 			点击+号按钮添加复习项
-		</text>
+		</view>
 		<view wx:for="{{ todos }}" wx:key="index" class="todo-list__item">
-			<view>
-				<todo-checkbox class="todo-item__checkbox" checked="{{ item.completed }}" data-uuid="{{ item.uuid }}" bindchange="handleCompletedChange">
+			<view style="width: 100%;overflow-x: auto;white-space: nowrap;">
+				<todo-checkbox
+				class="todo-item__checkbox"
+				data-uuid="{{ item.uuid }}"
+				bindcheck="handleCheckboxCheck"
+				binduncheck="handleCheckboxUncheck"
+				>
 				</todo-checkbox>
-				<p data-uuid="{{ item.uuid }}" bindtap="handleTodoTap" bindlongtap="handleTodoLongTap">
+				<p
+				class="todo-text {{done[item.uuid]? 'todo_checked':''}}"
+				data-uuid="{{ item.uuid }}"
+				bindtap="handleTodoTap"
+				bindlongtap="handleTodoLongTap">
 					{{item.title}}
 				</p>
-				<button class="mini-btn" type="default" size="mini" data-uuid="{{ item.uuid }}" style="height:33px" bindtap="handleForgot">
+				<button class="mini-btn forgot-btn" type="default" size="mini" data-uuid="{{ item.uuid }}" style="height:33px" bindtap="handleForgot">
 					未掌握
 				</button>
 			</view>

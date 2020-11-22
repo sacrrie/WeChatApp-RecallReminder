@@ -10,8 +10,15 @@ Page({
   data: {
     // todos
     todos: [],
-
+    done:{}
   },
+  onLoad(){
+      this.syncData()
+      for (let item of this.data.todos){
+          this.data.done[item.uuid]=false
+          }
+          this.update()
+      },
 
   /**
    * 生命周期函数--监听页面显示
@@ -25,7 +32,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide () {
-    this.syncData()
+    //this.syncData()
   },
 
   /**
@@ -44,10 +51,22 @@ Page({
     this.update()
   },
   
-  handleCompletedChange(e) {
+  handleCheckboxCheck(e) {
     let uuid = e.currentTarget.dataset.uuid
+    this.data.done[uuid]=true
+    this.update()
     let original_todo=todoStore.getTodo(uuid)
-    original_todo.repetition.pop()
+    original_todo.done.push(original_todo.repetition.pop())
+    todoStore.editTodo(uuid,original_todo)
+    todoStore.save()
+  },
+  
+  handleCheckboxUncheck(e) {
+    let uuid = e.currentTarget.dataset.uuid
+    this.data.done[uuid]=false
+    this.update()
+    let original_todo=todoStore.getTodo(uuid)
+    original_todo.repetition.push(original_todo.done.pop())
     todoStore.editTodo(uuid,original_todo)
     todoStore.save()
   },

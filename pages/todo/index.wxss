@@ -14,3 +14,20 @@
 .todo-list__item {
 
 }
+
+.todo_checked{
+    color: gray;
+    font-style: italic;
+    text-decoration: line-through;
+}
+.forgot-btn{
+    float: right;
+    margin-top: 5rpx;
+    }
+
+.todo-text{
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    }
