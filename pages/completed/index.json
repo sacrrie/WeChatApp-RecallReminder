@@ -1,7 +1,6 @@
 {
-  "navigationBarTitleText": "笔记",
+  "navigationBarTitleText": "已完成",
   "usingComponents": {
-    "note-card": "/components/note-card/note-card",
-    "tips-info": "/components/tips-info/tips-info"
+    "note-card": "/components/note-card/note-card"
   }
 }

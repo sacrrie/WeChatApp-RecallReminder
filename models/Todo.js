@@ -11,11 +11,7 @@ class Todo extends Model {
     Object.assign(this, {
       title: '',
       desc: '',
-      date: new Date(),
-      level: 1,
-      completed: false,
       createdAt: new Date(),
-      completedAt: new Date(),
       repetition: []
     }, model)
 

@@ -1,3 +1,4 @@
+/*
 const formatTime = (date, hasTime) => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -17,6 +18,7 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
+*/
 
 const uuid = () => {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -41,7 +43,6 @@ const getRepetitions=(date)=>{
 }
 
 module.exports = {
-  formatTime: formatTime,
   uuid: uuid,
   addDays: addDays,
   getRepetitions: getRepetitions

@@ -43,6 +43,15 @@ Page({
     this.setData(data)
   },
 
+  handleForgot(e) {
+    let uuid = e.currentTarget.dataset.uuid
+    let original_todo=todoStore.getTodo(uuid)
+    original_todo.repetition=util.getRepetitions(new Date())
+    todoStore.editTodo(uuid,original_todo)
+    todoStore.save()
+    this.syncData()
+  },
+
   /**
    * 笔记 tap 事件
    */

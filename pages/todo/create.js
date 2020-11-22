@@ -37,14 +37,14 @@ Page({
 
   },
 
-  /**
-   * Todo 改变事件
-   */
-  handleTodoItemChange (e) {
-    let todo = e.detail.data.todo
-    Object.assign(this.data.todo, todo)
-    this.update()
-  },
+  ///**
+  // * Todo 改变事件
+  // */
+  //handleTodoItemChange (e) {
+  //  let todo = e.detail.data.todo
+  //  Object.assign(this.data.todo, todo)
+  //  this.update()
+  //},
   /**
    * title输入事件
    */

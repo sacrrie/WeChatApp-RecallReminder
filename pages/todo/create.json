@@ -1,6 +1,4 @@
 {
   "navigationBarTitleText": "新建复习项",
-  "usingComponents": {
-    "todo-item": "/components/todo-item/todo-item"
-  }
+  "usingComponents": {}
 }

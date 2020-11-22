@@ -1,38 +1,24 @@
 <!--index.wxml-->
 <view class="page">
-  <view class="todo-list">
-    <view class="todo-header">
-      今日需复习
-    </view>
-    <view
-      wx:for="{{ todos }}"
-      wx:key="index"
-      class="todo-list__item"
-      >
-      <view>
-        <todo-checkbox
-        class="todo-item__checkbox"
-        checked="{{ item.completed }}"
-        data-uuid="{{ item.uuid }}"
-        bindchange="handleCompletedChange">
-        </todo-checkbox>
-        <p
-        data-uuid="{{ item.uuid }}"
-        bindtap="handleTodoTap"
-        bindlongtap="handleTodoLongTap">
-            {{item.title}}
-        </p>
-        <button
-        class="mini-btn"
-        type="default"
-        size="mini"
-        data-uuid="{{ item.uuid }}"
-        style="height:33px"
-        bindtap="handleForgot">
-            未掌握
-        </button>
-  </view>
-    </view>
-  </view>
-  <view class="todo-add" bindtap="handleAddTodo">+</view>
+	<view class="todo-list">
+		<view class="todo-header" wx:if="{{todos.length}}">
+			今日需复习
+		</view>
+		<text wx:if="{{!todos.length}}">
+			点击+号按钮添加复习项
+		</text>
+		<view wx:for="{{ todos }}" wx:key="index" class="todo-list__item">
+			<view>
+				<todo-checkbox class="todo-item__checkbox" checked="{{ item.completed }}" data-uuid="{{ item.uuid }}" bindchange="handleCompletedChange">
+				</todo-checkbox>
+				<p data-uuid="{{ item.uuid }}" bindtap="handleTodoTap" bindlongtap="handleTodoLongTap">
+					{{item.title}}
+				</p>
+				<button class="mini-btn" type="default" size="mini" data-uuid="{{ item.uuid }}" style="height:33px" bindtap="handleForgot">
+					未掌握
+				</button>
+			</view>
+		</view>
+	</view>
+	<view class="todo-add" bindtap="handleAddTodo">+</view>
 </view>

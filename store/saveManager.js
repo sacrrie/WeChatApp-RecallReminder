@@ -1,5 +1,4 @@
 import todoStore from './todoStore'
-import noteStore from './noteStore'
 
 /**
  * store 管理类
@@ -10,7 +9,6 @@ export default {
    */
   read() {
     todoStore.read()
-    noteStore.read()
   },
 
   /**
@@ -18,6 +16,5 @@ export default {
    */
   save() {
     todoStore.save()
-    noteStore.save()
   }
 }
