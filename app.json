@@ -33,8 +33,8 @@
       {
         "pagePath": "pages/completed/index",
         "text": "已完成",
-        "iconPath": "/assets/img/icon-user.png",
-        "selectedIconPath": "/assets/img/icon-user-active.png"
+        "iconPath": "/assets/img/completed.png",
+        "selectedIconPath": "/assets/img/complete.png"
       }
     ]
   },

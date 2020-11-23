@@ -11,9 +11,6 @@
   background: #fff;
 }
 
-.todo-list__item {
-
-}
 
 .todo_checked{
     color: gray;
