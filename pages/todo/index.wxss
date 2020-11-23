@@ -30,4 +30,13 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: #2C323F;
+    vertical-align: middle;
+    }
+
+    .todo-item__checkbox {
+      display: inline-block;
+      padding: 0 32rpx 0 20rpx;
+      padding-bottom: 4px;
+      vertical-align: middle;
     }

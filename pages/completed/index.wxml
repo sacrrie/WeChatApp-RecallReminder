@@ -16,6 +16,8 @@
 					重新复习
 				</button>
   </view>
-  <text wx:if="{{!notes.length}}">暂无完成项</text>
+  <view class="no-completion" wx:if="{{!notes.length}}">
+    暂无完成项
+		</view>
   <view class="todo-add" bindtap="handleAddNote">+</view>
 </view>

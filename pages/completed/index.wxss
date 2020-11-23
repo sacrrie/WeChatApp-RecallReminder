@@ -1,1 +1,10 @@
 /* pages/note/list.wxss */
+.no-completion{
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #2C323F;
+  vertical-align: middle;
+  text-align: center;
+  }
